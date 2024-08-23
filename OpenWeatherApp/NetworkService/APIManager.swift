@@ -5,16 +5,21 @@
 //  Created by Sailor on 8/23/24.
 //
 
-import Foundation
 import UIKit
+import Foundation
 
 class APIManager {
     
     static let shared = APIManager()
     
+    private let apiKey = "" // provide your api key
+    
     private init() {}
     
-    func fetchWeatherData(for endpoint: Endpoint, completion: @escaping (Result<WeatherResponse, NetworkError>) -> Void) {
+    // Step 1: Obtain geographic coordinates using the Geocoding API
+    func getCoordinates(for cityName: String, completion: @escaping (Result<Coordinate, NetworkError>) -> Void) {
+        let endpoint = Endpoint.geocode(cityName: cityName, apiKey: apiKey)
+        
         guard let url = endpoint.url else {
             completion(.failure(.invalidURL))
             return
@@ -26,8 +31,38 @@ class APIManager {
                 return
             }
             
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                completion(.failure(.invalidResponse))
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let geocodeResponse = try JSONDecoder().decode([GeocodeResponse].self, from: data)
+                if let firstLocation = geocodeResponse.first {
+                    let coordinate = Coordinate(latitude: firstLocation.lat, longitude: firstLocation.lon)
+                    completion(.success(coordinate))
+                } else {
+                    completion(.failure(.noData))
+                }
+            } catch {
+                completion(.failure(.decodingError(error)))
+            }
+        }
+        task.resume()
+    }
+    
+    // Step 2: Use the coordinates to request weather data
+    func fetchWeatherData(for coordinate: Coordinate, completion: @escaping (Result<WeatherResponse, NetworkError>) -> Void) {
+        let endpoint = Endpoint.weatherByCoordinates(lat: coordinate.latitude, lon: coordinate.longitude, apiKey: apiKey)
+        
+        guard let url = endpoint.url else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(.networkError(error)))
                 return
             }
             
@@ -43,20 +78,8 @@ class APIManager {
                 completion(.failure(.decodingError(error)))
             }
         }
-        
         task.resume()
     }
-    
-//    func downloadWeatherIcon(with url: URL, completion: @escaping (UIImage?) -> Void) {
-//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//            if let data = data, let image = UIImage(data: data) {
-//                completion(image)
-//            } else {
-//                completion(nil)
-//            }
-//        }
-//        task.resume()
-//    }
 }
 
 

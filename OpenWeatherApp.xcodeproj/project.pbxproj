@@ -31,6 +31,7 @@
 		CCD88FE92C793DBE001575BD /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FE82C793DBE001575BD /* UserPreferences.swift */; };
 		CCD88FEB2C793DE2001575BD /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEA2C793DE2001575BD /* PermissionManager.swift */; };
 		CCD88FED2C793E13001575BD /* LocationPermissionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEC2C793E13001575BD /* LocationPermissionHandler.swift */; };
+		CCD88FEF2C794538001575BD /* GeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEE2C794538001575BD /* GeocodeResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		CCD88FE82C793DBE001575BD /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		CCD88FEA2C793DE2001575BD /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		CCD88FEC2C793E13001575BD /* LocationPermissionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHandler.swift; sourceTree = "<group>"; };
+		CCD88FEE2C794538001575BD /* GeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				CCD88FDE2C79342C001575BD /* Location.swift */,
 				CCD88FE02C79345B001575BD /* Coordinate.swift */,
 				CCD88FE22C793472001575BD /* WeatherResponse.swift */,
+				CCD88FEE2C794538001575BD /* GeocodeResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				CCD88FEB2C793DE2001575BD /* PermissionManager.swift in Sources */,
 				CCD88FD52C7932B4001575BD /* Endpoint.swift in Sources */,
 				CCD88FE92C793DBE001575BD /* UserPreferences.swift in Sources */,
+				CCD88FEF2C794538001575BD /* GeocodeResponse.swift in Sources */,
 				CCD88FD72C7932D8001575BD /* NetworkError.swift in Sources */,
 				CCD88FDB2C79336B001575BD /* LocationService.swift in Sources */,
 				CCD88FE32C793472001575BD /* WeatherResponse.swift in Sources */,

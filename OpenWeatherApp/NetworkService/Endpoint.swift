@@ -20,10 +20,11 @@ struct Endpoint {
         return components.url
     }
     
-    static func weatherByCityName(_ cityName: String, apiKey: String) -> Endpoint {
-        return Endpoint(path: "/data/2.5/weather",
+    static func geocode(cityName: String, apiKey: String) -> Endpoint {
+        return Endpoint(path: "/geo/1.0/direct",
                         queryItems: [
                             URLQueryItem(name: "q", value: cityName),
+                            URLQueryItem(name: "limit", value: "1"),
                             URLQueryItem(name: "appid", value: apiKey)
                         ])
     }
