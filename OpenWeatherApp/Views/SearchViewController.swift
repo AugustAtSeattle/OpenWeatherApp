@@ -126,6 +126,21 @@ class SearchViewController: UIViewController {
         ])
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular {
+            // Portrait mode on most iPhones
+            cityTextField.textAlignment = .center
+        } else if traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .compact {
+            // Landscape mode on smaller devices like iPhones
+            cityTextField.textAlignment = .left
+        } else if traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular {
+            // iPad or large screen in any orientation
+            cityTextField.textAlignment = .left
+        }
+    }
+    
     @objc private func searchButtonTapped() {
         guard let cityName = cityTextField.text, !cityName.isEmpty else {
             showAlert(message: "Please enter a city name")
