@@ -11,13 +11,26 @@ struct WeatherView: View {
     let cityName: String
     let temperature: String
     let weatherDescription: String
-//    let weatherIcon: Image
+    let weatherIconURL: URL?
+
+    @State private var weatherIcon: UIImage? = nil
 
     var body: some View {
         VStack {
-//            weatherIcon
-//                .resizable()
-//                .frame(width: 100, height: 100)
+            if let weatherIcon = weatherIcon {
+                Image(uiImage: weatherIcon)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+            } else {
+                // Placeholder image while loading
+                Image(systemName: "photo")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .onAppear {
+                        loadWeatherIcon()
+                    }
+            }
+            
             Text(cityName)
                 .font(.largeTitle)
                 .padding(.top)
@@ -27,6 +40,19 @@ struct WeatherView: View {
                 .font(.subheadline)
         }
     }
+
+    private func loadWeatherIcon() {
+        guard let url = weatherIconURL else { return }
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.weatherIcon = image
+                }
+            }
+        }
+        task.resume()
+    }
 }
 
 struct WeatherView_Previews: PreviewProvider {
@@ -34,8 +60,8 @@ struct WeatherView_Previews: PreviewProvider {
         WeatherView(
             cityName: "Seattle",
             temperature: "72",
-            weatherDescription: "Sunny"
-            //weatherIcon: Image(systemName: "sun.max.fill") // Use SwiftUI's Image
+            weatherDescription: "Sunny",
+            weatherIconURL: URL(string: "https://openweathermap.org/img/wn/01d@2x.png") // Example URL
         )
     }
 }
