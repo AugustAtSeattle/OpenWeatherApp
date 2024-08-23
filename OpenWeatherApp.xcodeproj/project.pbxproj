@@ -29,7 +29,6 @@
 		CCD88FE32C793472001575BD /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FE22C793472001575BD /* WeatherResponse.swift */; };
 		CCD88FE72C79356B001575BD /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FE62C79356B001575BD /* PersistenceManager.swift */; };
 		CCD88FE92C793DBE001575BD /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FE82C793DBE001575BD /* UserPreferences.swift */; };
-		CCD88FEB2C793DE2001575BD /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEA2C793DE2001575BD /* PermissionManager.swift */; };
 		CCD88FED2C793E13001575BD /* LocationPermissionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEC2C793E13001575BD /* LocationPermissionHandler.swift */; };
 		CCD88FEF2C794538001575BD /* GeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEE2C794538001575BD /* GeocodeResponse.swift */; };
 		CCD88FF12C79477F001575BD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FF02C79477F001575BD /* SearchViewModel.swift */; };
@@ -79,7 +78,6 @@
 		CCD88FE22C793472001575BD /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		CCD88FE62C79356B001575BD /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		CCD88FE82C793DBE001575BD /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
-		CCD88FEA2C793DE2001575BD /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		CCD88FEC2C793E13001575BD /* LocationPermissionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHandler.swift; sourceTree = "<group>"; };
 		CCD88FEE2C794538001575BD /* GeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeResponse.swift; sourceTree = "<group>"; };
 		CCD88FF02C79477F001575BD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -228,7 +226,6 @@
 		CCD88FE52C793537001575BD /* Permission */ = {
 			isa = PBXGroup;
 			children = (
-				CCD88FEA2C793DE2001575BD /* PermissionManager.swift */,
 				CCD88FEC2C793E13001575BD /* LocationPermissionHandler.swift */,
 			);
 			path = Permission;
@@ -365,7 +362,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCD88FEB2C793DE2001575BD /* PermissionManager.swift in Sources */,
 				CCD88FD52C7932B4001575BD /* Endpoint.swift in Sources */,
 				CCD88FE92C793DBE001575BD /* UserPreferences.swift in Sources */,
 				CCD88FEF2C794538001575BD /* GeocodeResponse.swift in Sources */,
