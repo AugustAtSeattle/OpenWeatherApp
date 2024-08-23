@@ -16,6 +16,8 @@
 		CCD88FAF2C792ADC001575BD /* OpenWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FAE2C792ADC001575BD /* OpenWeatherAppTests.swift */; };
 		CCD88FB92C792ADC001575BD /* OpenWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FB82C792ADC001575BD /* OpenWeatherAppUITests.swift */; };
 		CCD88FBB2C792ADC001575BD /* OpenWeatherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FBA2C792ADC001575BD /* OpenWeatherAppUITestsLaunchTests.swift */; };
+		CCD88FCD2C792CD3001575BD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FCC2C792CD3001575BD /* SearchViewController.swift */; };
+		CCD88FCF2C792CED001575BD /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FCE2C792CED001575BD /* WeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		CCD88FB42C792ADC001575BD /* OpenWeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenWeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD88FB82C792ADC001575BD /* OpenWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAppUITests.swift; sourceTree = "<group>"; };
 		CCD88FBA2C792ADC001575BD /* OpenWeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CCD88FCC2C792CD3001575BD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CCD88FCE2C792CED001575BD /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				CCD88F972C792ADB001575BD /* AppDelegate.swift */,
+				CCD88FC92C792C8C001575BD /* Models */,
+				CCD88FC82C792C7A001575BD /* ViewModels */,
+				CCD88FC72C792C66001575BD /* Views */,
 				CCD88F992C792ADB001575BD /* SceneDelegate.swift */,
 				CCD88F9B2C792ADB001575BD /* ViewController.swift */,
 				CCD88F9D2C792ADB001575BD /* Main.storyboard */,
@@ -125,6 +132,29 @@
 				CCD88FBA2C792ADC001575BD /* OpenWeatherAppUITestsLaunchTests.swift */,
 			);
 			path = OpenWeatherAppUITests;
+			sourceTree = "<group>";
+		};
+		CCD88FC72C792C66001575BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CCD88FCC2C792CD3001575BD /* SearchViewController.swift */,
+				CCD88FCE2C792CED001575BD /* WeatherView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CCD88FC82C792C7A001575BD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CCD88FC92C792C8C001575BD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +288,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCD88FCD2C792CD3001575BD /* SearchViewController.swift in Sources */,
 				CCD88F9C2C792ADB001575BD /* ViewController.swift in Sources */,
+				CCD88FCF2C792CED001575BD /* WeatherView.swift in Sources */,
 				CCD88F982C792ADB001575BD /* AppDelegate.swift in Sources */,
 				CCD88F9A2C792ADB001575BD /* SceneDelegate.swift in Sources */,
 			);
