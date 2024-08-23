@@ -47,8 +47,24 @@ class APIManager {
         task.resume()
     }
     
-    func downloadWeatherIcon(with url: URL, completion: @escaping (UIImage?) -> Void) {
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+//    func downloadWeatherIcon(with url: URL, completion: @escaping (UIImage?) -> Void) {
+//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+//            if let data = data, let image = UIImage(data: data) {
+//                completion(image)
+//            } else {
+//                completion(nil)
+//            }
+//        }
+//        task.resume()
+//    }
+}
+
+
+
+// The utility function for downloading images
+extension URLSession {
+    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        let task = self.dataTask(with: url) { data, response, error in
             if let data = data, let image = UIImage(data: data) {
                 completion(image)
             } else {

@@ -3,7 +3,6 @@
 //  OpenWeatherApp
 //
 //  Created by Sailor on 8/23/24.
-//
 
 import SwiftUI
 
@@ -22,8 +21,7 @@ struct WeatherView: View {
                     .resizable()
                     .frame(width: 100, height: 100)
             } else {
-                // Placeholder image while loading
-                Image(systemName: "photo")
+                Image(systemName: "photo")  // Placeholder image
                     .resizable()
                     .frame(width: 100, height: 100)
                     .onAppear {
@@ -43,15 +41,11 @@ struct WeatherView: View {
 
     private func loadWeatherIcon() {
         guard let url = weatherIconURL else { return }
-
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let data = data, let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.weatherIcon = image
-                }
+        URLSession.shared.downloadImage(from: url) { image in
+            DispatchQueue.main.async {
+                self.weatherIcon = image
             }
         }
-        task.resume()
     }
 }
 
