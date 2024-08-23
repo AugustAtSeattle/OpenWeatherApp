@@ -27,7 +27,7 @@ class LocationService: LocationManagerDelegate {
         print("Location updated: (\(latitude), \(longitude))")
     }
     
-    func didFailWithError(error: Error) {
+    func didFailWithError(_ error: Error) {
         // Handle location update failure
         print("Failed to update location: \(error.localizedDescription)")
     }

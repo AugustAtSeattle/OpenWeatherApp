@@ -32,6 +32,7 @@
 		CCD88FEB2C793DE2001575BD /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEA2C793DE2001575BD /* PermissionManager.swift */; };
 		CCD88FED2C793E13001575BD /* LocationPermissionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEC2C793E13001575BD /* LocationPermissionHandler.swift */; };
 		CCD88FEF2C794538001575BD /* GeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEE2C794538001575BD /* GeocodeResponse.swift */; };
+		CCD88FF12C79477F001575BD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FF02C79477F001575BD /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		CCD88FEA2C793DE2001575BD /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		CCD88FEC2C793E13001575BD /* LocationPermissionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHandler.swift; sourceTree = "<group>"; };
 		CCD88FEE2C794538001575BD /* GeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeResponse.swift; sourceTree = "<group>"; };
+		CCD88FF02C79477F001575BD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 		CCD88FC82C792C7A001575BD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CCD88FF02C79477F001575BD /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				CCD88FEF2C794538001575BD /* GeocodeResponse.swift in Sources */,
 				CCD88FD72C7932D8001575BD /* NetworkError.swift in Sources */,
 				CCD88FDB2C79336B001575BD /* LocationService.swift in Sources */,
+				CCD88FF12C79477F001575BD /* SearchViewModel.swift in Sources */,
 				CCD88FE32C793472001575BD /* WeatherResponse.swift in Sources */,
 				CCD88FED2C793E13001575BD /* LocationPermissionHandler.swift in Sources */,
 				CCD88FDD2C79341A001575BD /* Weather.swift in Sources */,

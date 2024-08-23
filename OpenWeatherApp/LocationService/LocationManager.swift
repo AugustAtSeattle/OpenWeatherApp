@@ -4,13 +4,12 @@
 //
 //  Created by Sailor on 8/23/24.
 //
-
 import Foundation
 import CoreLocation
 
 protocol LocationManagerDelegate: AnyObject {
     func didUpdateLocation(latitude: Double, longitude: Double)
-    func didFailWithError(error: Error)
+    func didFailWithError(_ error: Error)
 }
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
@@ -31,6 +30,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func startUpdatingLocation() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
+        } else {
+            delegate?.didFailWithError(LocationError.locationServicesDisabled)
         }
     }
     
@@ -48,6 +49,18 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        delegate?.didFailWithError(error: error)
+        delegate?.didFailWithError(error)
+    }
+}
+
+// Custom error for handling location-related issues
+enum LocationError: Error, LocalizedError {
+    case locationServicesDisabled
+    
+    var errorDescription: String? {
+        switch self {
+        case .locationServicesDisabled:
+            return "Location services are disabled. Please enable them in settings."
+        }
     }
 }
