@@ -55,6 +55,12 @@ class SearchViewController: UIViewController {
                 self?.showAlert(message: errorMessage)
             }
         }
+        
+        self.viewModel.onLastSearchUpdated = { [weak self] isAvailable in
+            DispatchQueue.main.async {
+                self?.previousSearchButton.isEnabled = isAvailable
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -69,7 +75,12 @@ class SearchViewController: UIViewController {
         
         setupLayout()
         
-        // Request location permission through the ViewModel
+        if viewModel.isLastSearchAvailable() {
+            previousSearchButton.isEnabled = true
+        } else {
+            previousSearchButton.isEnabled = false
+        }
+        
         viewModel.requestLocationPermission()
     }
     

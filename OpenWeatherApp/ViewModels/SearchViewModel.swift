@@ -14,6 +14,8 @@ class SearchViewModel: LocationManagerDelegate {
     private let persistenceManager: PersistenceManager
     private let locationPermissionHandler: LocationPermissionHandler
     
+    // Closure to notify the ViewController when the last search availability changes
+    var onLastSearchUpdated: ((Bool) -> Void)?
     var onWeatherDataFetched: ((WeatherResponse, String) -> Void)?
     var onError: ((String) -> Void)?
     
@@ -50,6 +52,9 @@ class SearchViewModel: LocationManagerDelegate {
             case .success(let coordinate):
                 self?.fetchWeatherData(for: coordinate, cityName: cityName)
                 self?.persistenceManager.save(cityName, forKey: "lastSearchedCity")
+                
+                self?.onLastSearchUpdated?(true)
+                
             case .failure(let error):
                 self?.onError?("Failed to get coordinates: \(error.localizedDescription)")
             }
@@ -62,6 +67,10 @@ class SearchViewModel: LocationManagerDelegate {
         } else {
             onError?("No previous search found")
         }
+    }
+    
+    func isLastSearchAvailable() -> Bool {
+        return persistenceManager.retrieve(forKey: "lastSearchedCity", as: String.self) != nil
     }
     
     private func fetchLocalWeather() {
