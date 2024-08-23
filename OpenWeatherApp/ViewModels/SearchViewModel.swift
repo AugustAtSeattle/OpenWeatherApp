@@ -18,6 +18,8 @@ class SearchViewModel: LocationManagerDelegate {
     var onLastSearchUpdated: ((Bool) -> Void)?
     var onWeatherDataFetched: ((WeatherResponse, String) -> Void)?
     var onError: ((String) -> Void)?
+    var onLocationPermissionGranted: (() -> Void)?
+    
     
     init(apiManager: APIManager = APIManager.shared,
          locationManager: LocationManager = LocationManager(),
@@ -33,6 +35,7 @@ class SearchViewModel: LocationManagerDelegate {
     
     private func setupHandlers() {
         locationPermissionHandler.onPermissionGranted = { [weak self] in
+            self?.onLocationPermissionGranted?()
             self?.fetchLocalWeather()
         }
         locationPermissionHandler.onPermissionDenied = { [weak self] in
@@ -61,6 +64,10 @@ class SearchViewModel: LocationManagerDelegate {
         }
     }
     
+    func fetchLocalWeather() {
+        locationManager.startUpdatingLocation()  // Start the location manager to fetch current location
+    }
+    
     func fetchWeatherForLastSearchedCity() {
         if let lastCity = persistenceManager.retrieve(forKey: "lastSearchedCity", as: String.self) {
             fetchWeather(for: lastCity)
@@ -72,11 +79,7 @@ class SearchViewModel: LocationManagerDelegate {
     func isLastSearchAvailable() -> Bool {
         return persistenceManager.retrieve(forKey: "lastSearchedCity", as: String.self) != nil
     }
-    
-    private func fetchLocalWeather() {
-        locationManager.startUpdatingLocation()
-    }
-    
+        
     func fetchWeatherData(for coordinate: Coordinate, cityName: String) {
         apiManager.fetchWeatherData(for: coordinate) { [weak self] result in
             switch result {

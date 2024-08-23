@@ -34,6 +34,14 @@ class SearchViewController: UIViewController {
         return button
     }()
     
+    private let localWeatherButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Display Local Weather", for: .normal)
+        button.addTarget(self, action: #selector(localWeatherButtonTapped), for: .touchUpInside)
+        button.isEnabled = false // Initially disabled
+        return button
+    }()
+    
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.hidesWhenStopped = true
@@ -61,6 +69,13 @@ class SearchViewController: UIViewController {
                 self?.previousSearchButton.isEnabled = isAvailable
             }
         }
+        
+        // Enable the "Display Local Weather" button if location permission is granted
+        self.viewModel.onLocationPermissionGranted = { [weak self] in
+            DispatchQueue.main.async {
+                self?.localWeatherButton.isEnabled = true
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -75,12 +90,7 @@ class SearchViewController: UIViewController {
         
         setupLayout()
         
-        if viewModel.isLastSearchAvailable() {
-            previousSearchButton.isEnabled = true
-        } else {
-            previousSearchButton.isEnabled = false
-        }
-        
+        // Request location permission when the view loads
         viewModel.requestLocationPermission()
     }
     
@@ -88,11 +98,13 @@ class SearchViewController: UIViewController {
         view.addSubview(cityTextField)
         view.addSubview(searchButton)
         view.addSubview(previousSearchButton)
+        view.addSubview(localWeatherButton)
         view.addSubview(activityIndicator)
         
         cityTextField.translatesAutoresizingMaskIntoConstraints = false
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         previousSearchButton.translatesAutoresizingMaskIntoConstraints = false
+        localWeatherButton.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -106,7 +118,10 @@ class SearchViewController: UIViewController {
             previousSearchButton.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 20),
             previousSearchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            activityIndicator.topAnchor.constraint(equalTo: previousSearchButton.bottomAnchor, constant: 20),
+            localWeatherButton.topAnchor.constraint(equalTo: previousSearchButton.bottomAnchor, constant: 20),
+            localWeatherButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            activityIndicator.topAnchor.constraint(equalTo: localWeatherButton.bottomAnchor, constant: 20),
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
@@ -122,6 +137,10 @@ class SearchViewController: UIViewController {
     
     @objc private func previousSearchButtonTapped() {
         viewModel.fetchWeatherForLastSearchedCity()
+    }
+    
+    @objc private func localWeatherButtonTapped() {
+        viewModel.fetchLocalWeather()
     }
     
     private func showWeatherView(for weatherResponse: WeatherResponse, cityName: String) {

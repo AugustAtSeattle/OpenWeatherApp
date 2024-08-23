@@ -9,27 +9,31 @@ import Foundation
 import CoreLocation
 
 class LocationPermissionHandler: NSObject, CLLocationManagerDelegate {
-    
-    private let locationManager = CLLocationManager()
     var onPermissionGranted: (() -> Void)?
     var onPermissionDenied: (() -> Void)?
-    
+
+    private let locationManager = CLLocationManager()
+
     override init() {
         super.init()
         locationManager.delegate = self
     }
-    
+
     func requestLocationPermission() {
-        PermissionManager.shared.checkLocationPermission { [weak self] granted in
-            if granted {
-                self?.onPermissionGranted?()
-            } else {
-                self?.locationManager.requestWhenInUseAuthorization()
-            }
+        let status = CLLocationManager.authorizationStatus()
+
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            onPermissionDenied?()
+        case .authorizedWhenInUse, .authorizedAlways:
+            onPermissionGranted?()
+        @unknown default:
+            onPermissionDenied?()
         }
     }
-    
-    // CLLocationManagerDelegate
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
