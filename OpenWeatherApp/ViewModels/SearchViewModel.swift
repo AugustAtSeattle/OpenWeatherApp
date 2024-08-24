@@ -9,9 +9,9 @@ import CoreLocation
 
 class SearchViewModel: LocationManagerDelegate {
     
-    private let apiManager: APIManager
+    private let apiManager: APIManagerProtocol
     private let locationManager: LocationManager
-    private let persistenceManager: PersistenceManager
+    private let persistenceManager: PersistenceManagerProtocol
     private let locationPermissionHandler: LocationPermissionHandler
     
     // Closure to notify the ViewController when the last search availability changes
@@ -20,10 +20,9 @@ class SearchViewModel: LocationManagerDelegate {
     var onError: ((String) -> Void)?
     var onLocationPermissionGranted: (() -> Void)?
     
-    
-    init(apiManager: APIManager = APIManager.shared,
+    init(apiManager: APIManagerProtocol = APIManager.shared,
          locationManager: LocationManager = LocationManager(),
-         persistenceManager: PersistenceManager = PersistenceManager.shared,
+         persistenceManager: PersistenceManagerProtocol = PersistenceManager.shared,
          locationPermissionHandler: LocationPermissionHandler = LocationPermissionHandler()) {
         self.apiManager = apiManager
         self.locationManager = locationManager

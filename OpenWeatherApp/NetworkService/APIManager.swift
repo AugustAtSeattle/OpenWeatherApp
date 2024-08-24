@@ -8,13 +8,17 @@
 import UIKit
 import Foundation
 
-class APIManager {
-    
-    static let shared = APIManager()
-    
-    private let apiKey = "" // provide your api key
+protocol APIManagerProtocol {
+    func fetchWeatherData(for coordinate: Coordinate, completion: @escaping (Result<WeatherResponse, NetworkError>) -> Void)
+    func getCoordinates(for cityName: String, completion: @escaping (Result<Coordinate, NetworkError>) -> Void)
+}
+
+class APIManager: APIManagerProtocol {
     
     private init() {}
+
+    static let shared = APIManager()
+        
     
     // Step 1: Obtain geographic coordinates using the Geocoding API
     func getCoordinates(for cityName: String, completion: @escaping (Result<Coordinate, NetworkError>) -> Void) {

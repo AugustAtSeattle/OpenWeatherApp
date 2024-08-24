@@ -32,6 +32,13 @@
 		CCD88FED2C793E13001575BD /* LocationPermissionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEC2C793E13001575BD /* LocationPermissionHandler.swift */; };
 		CCD88FEF2C794538001575BD /* GeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FEE2C794538001575BD /* GeocodeResponse.swift */; };
 		CCD88FF12C79477F001575BD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FF02C79477F001575BD /* SearchViewModel.swift */; };
+		CCD88FF32C795674001575BD /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FF22C795674001575BD /* SearchViewModelTests.swift */; };
+		CCD88FF52C7956CE001575BD /* LocationManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FF42C7956CE001575BD /* LocationManagerTest.swift */; };
+		CCD88FF72C7956FC001575BD /* LocationPermissionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FF62C7956FC001575BD /* LocationPermissionHandlerTests.swift */; };
+		CCD88FF92C795722001575BD /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FF82C795722001575BD /* APIManagerTests.swift */; };
+		CCD88FFB2C795751001575BD /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FFA2C795751001575BD /* PersistenceManagerTests.swift */; };
+		CCD88FFD2C79578E001575BD /* SearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FFC2C79578E001575BD /* SearchViewControllerTests.swift */; };
+		CCD88FFF2C7957DD001575BD /* MockComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD88FFE2C7957DD001575BD /* MockComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +88,13 @@
 		CCD88FEC2C793E13001575BD /* LocationPermissionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHandler.swift; sourceTree = "<group>"; };
 		CCD88FEE2C794538001575BD /* GeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeResponse.swift; sourceTree = "<group>"; };
 		CCD88FF02C79477F001575BD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		CCD88FF22C795674001575BD /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
+		CCD88FF42C7956CE001575BD /* LocationManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTest.swift; sourceTree = "<group>"; };
+		CCD88FF62C7956FC001575BD /* LocationPermissionHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHandlerTests.swift; sourceTree = "<group>"; };
+		CCD88FF82C795722001575BD /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
+		CCD88FFA2C795751001575BD /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
+		CCD88FFC2C79578E001575BD /* SearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTests.swift; sourceTree = "<group>"; };
+		CCD88FFE2C7957DD001575BD /* MockComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +167,13 @@
 			isa = PBXGroup;
 			children = (
 				CCD88FAE2C792ADC001575BD /* OpenWeatherAppTests.swift */,
+				CCD88FF22C795674001575BD /* SearchViewModelTests.swift */,
+				CCD88FF42C7956CE001575BD /* LocationManagerTest.swift */,
+				CCD88FF62C7956FC001575BD /* LocationPermissionHandlerTests.swift */,
+				CCD88FF82C795722001575BD /* APIManagerTests.swift */,
+				CCD88FFA2C795751001575BD /* PersistenceManagerTests.swift */,
+				CCD88FFC2C79578E001575BD /* SearchViewControllerTests.swift */,
+				CCD88FFE2C7957DD001575BD /* MockComponents.swift */,
 			);
 			path = OpenWeatherAppTests;
 			sourceTree = "<group>";
@@ -388,7 +409,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCD88FF32C795674001575BD /* SearchViewModelTests.swift in Sources */,
+				CCD88FF52C7956CE001575BD /* LocationManagerTest.swift in Sources */,
+				CCD88FF72C7956FC001575BD /* LocationPermissionHandlerTests.swift in Sources */,
+				CCD88FFB2C795751001575BD /* PersistenceManagerTests.swift in Sources */,
 				CCD88FAF2C792ADC001575BD /* OpenWeatherAppTests.swift in Sources */,
+				CCD88FFD2C79578E001575BD /* SearchViewControllerTests.swift in Sources */,
+				CCD88FF92C795722001575BD /* APIManagerTests.swift in Sources */,
+				CCD88FFF2C7957DD001575BD /* MockComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

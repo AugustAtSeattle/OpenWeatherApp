@@ -12,7 +12,7 @@ class SearchViewController: UIViewController {
     private let viewModel: SearchViewModel
     
     // UI Elements
-    private let cityTextField: UITextField = {
+    let cityTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter city name"
         textField.borderStyle = .roundedRect
@@ -20,21 +20,21 @@ class SearchViewController: UIViewController {
         return textField
     }()
     
-    private let searchButton: UIButton = {
+    let searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Search", for: .normal)
         button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    private let previousSearchButton: UIButton = {
+    let previousSearchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Last Search", for: .normal)
         button.addTarget(self, action: #selector(previousSearchButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    private let localWeatherButton: UIButton = {
+    let localWeatherButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Display Local Weather", for: .normal)
         button.addTarget(self, action: #selector(localWeatherButtonTapped), for: .touchUpInside)
@@ -42,7 +42,7 @@ class SearchViewController: UIViewController {
         return button
     }()
     
-    private let activityIndicator: UIActivityIndicatorView = {
+    let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.hidesWhenStopped = true
         return indicator

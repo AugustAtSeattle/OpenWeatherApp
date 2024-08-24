@@ -7,8 +7,13 @@
 
 import Foundation
 
-class PersistenceManager {
-    
+protocol PersistenceManagerProtocol {
+    func save<T: Codable>(_ object: T, forKey key: String)
+    func retrieve<T: Codable>(forKey key: String, as type: T.Type) -> T?
+    func remove(forKey key: String)
+}
+
+class PersistenceManager: PersistenceManagerProtocol {
     static let shared = PersistenceManager()
     private let userDefaults = UserDefaults.standard
     
