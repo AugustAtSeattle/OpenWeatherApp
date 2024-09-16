@@ -19,7 +19,7 @@ class APIManager: APIManagerProtocol {
 
     static let shared = APIManager()
         
-    private let apiKey = "8465f8f701c13e008c92b94e893ab308"
+    private let apiKey = ""
 
     // Step 1: Obtain geographic coordinates using the Geocoding API
     func getCoordinates(for cityName: String, completion: @escaping (Result<Coordinate, NetworkError>) -> Void) {
